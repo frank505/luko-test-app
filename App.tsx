@@ -12,11 +12,14 @@ export default function App() {
       [fonts.regular]: "https://fonts.cdnfonts.com/s/15011/CircularStd-Medium.woff",
       [fonts.bold]: "https://fonts.cdnfonts.com/s/15011/CircularStd-Bold.woff",
     });
-    if(!fontsLoaded) return <ActivityIndicator size="large" style={{justifyContent: 'center', flex: 1}} />
+    if(!fontsLoaded) return <ActivityIndicator 
+    testID='activityIndicatorFonts'
+    size="large" style={{justifyContent: 'center', flex: 1}} />
+    
     return (
       <SafeAreaProvider>
         <Navigation />
-        <StatusBar />
+        <StatusBar  />
       </SafeAreaProvider>
     );
 }

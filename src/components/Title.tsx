@@ -1,3 +1,4 @@
+import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { fonts } from "../theme/fonts";
 import AddButton from "./AddButton";
