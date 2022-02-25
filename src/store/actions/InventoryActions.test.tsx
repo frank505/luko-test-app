@@ -1,35 +1,39 @@
 import * as InventoryActions from "./InventoryActions";
-import createMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk'
 import { InventoryItem } from "../Reducers/types";
-import { InventoryDispatchType } from "./types";
-import { ADD_INVENTORY } from "../actiontypes/InventoryActionTypes";
+import { store } from "../store";
 
-const middlewares = [thunk]
-const mockStore = createMockStore(middlewares)
+
+
 
 
 describe('inventoryActions', () => {
 
  test('addinventory action', ()=>
  {
-    const res:any = {inventoryList: [] };
+    const res:InventoryItem = {
+       name: "ss",
+       value: "ss",
+       base64String: "aaa",
+       description:undefined
+    }
+    
 
-    const expectedActions:any =  
-       [ { type: ADD_INVENTORY , res } ]
+    store.dispatch(InventoryActions.AddInventoryAction(res));
          
-      const store = mockStore({ inventoryList: [] })
-      
-        jest.spyOn(InventoryActions,'AddInventoryAction').mockReturnValue
-        (
-         store.dispatch({ type:ADD_INVENTORY , res})
-        );
-        
-        expect(store.getActions()).toEqual(expectedActions);
-        expect(store.getState()).toEqual(res);
+       expect(store.getState().inventory.inventoryList[0]).toEqual(res);
 
  })  
 
+
+ test('count inventory', ()=>
+ {
+    const count:number = 1000;
+
+    store.dispatch(InventoryActions.setTotalPriceAction(count));
+         
+       expect(store.getState().inventory.inventoryTotalPrice).toEqual(count);
+
+ })  
 
    
 

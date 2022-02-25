@@ -7,13 +7,13 @@ import { InventoryDispatchType } from "./types";
 
 export const AddInventoryAction = (res:InventoryItem):any =>
 {
-    return (dispatch:Dispatch):any =>
+    return (dispatch:Dispatch<InventoryDispatchType>) =>
     {
         dispatch({type:InventoryActionTypes.ADD_INVENTORY, res})
     }
 }
 
-export const setTotalPriceAction = (res:number) =>
+export const setTotalPriceAction = (res:number):any =>
 {
     return (dispatch:Dispatch<InventoryDispatchType>) =>
     {

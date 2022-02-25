@@ -1,15 +1,13 @@
-import  React, { ReactInstance } from 'react';
+import  React from 'react';
 import { NavigationContainer } from "@react-navigation/native";
 import { cleanup, fireEvent, render, RenderAPI, waitFor } from "@testing-library/react-native"
 import { NativeBaseTestWrapper } from '../../../../jest/NativeBaseTestWrapper';
 import { Alert, View } from 'react-native';
 import AddItemForm from './AddItemForm';
-import createMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { store } from '../../../store/store';
 import * as ExpoImagePicker from 'expo-image-picker'
-import {ReactTestInstance} from 'react-test-renderer'
+
 import { isDisabled } from '../../../../jest/setup';
 import * as reduxContainer from 'react-redux';
 
@@ -26,8 +24,7 @@ jest.mock('expo-image-picker', () => {
 
 
 
-const middlewares = [thunk]
-const mockStore = createMockStore(middlewares)
+
 
 
 
@@ -165,6 +162,7 @@ describe('LoginForm Test', () => {
      fireEvent.changeText(valueField,'200'); //reduce amount to below TRANSACTION_LIMIT
      fireEvent.press(submitButton);
     await waitFor(()=> expect(mockDispatch).toBeCalled());
+    expect(mockGoBack).toBeCalled();
   })
 
 

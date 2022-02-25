@@ -14,6 +14,7 @@ import { AddInventoryAction, setTotalPriceAction } from '../../../store/actions/
 import { RootState } from '../../../store/Reducers/RootReducer';
 import { CURRENCY_SET, TRANSACTION_LIMIT } from '../../../constants';
 import { ScrollView } from 'native-base';
+import { InventoryDispatchType } from '../../../store/actions/types';
 
 
 
@@ -23,7 +24,7 @@ const AddItemForm:React.FC = () =>
 {
 
    const navigation = useNavigation();
-   const dispatch:Dispatch<any> = useDispatch();
+   const dispatch:Dispatch<InventoryDispatchType> = useDispatch();
    const inventoryTotalCost = useSelector((state:RootState) => state.inventory.inventoryTotalPrice);
    
 

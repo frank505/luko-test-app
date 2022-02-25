@@ -8,12 +8,12 @@ import { InventoryListParam } from "../types";
 
 
 
- const InventoryList:React.FC<InventoryListParam> = ({list}) =>
+ const InventoryList:React.FC<InventoryListParam> = ({list,testID}) =>
 {
      
 
   return (
-    <View style={styles.listParentView}>
+    <View style={styles.listParentView} testID={testID} >
         <Image
         style={styles.imageStyle}
         source={{uri:list.base64String}}
