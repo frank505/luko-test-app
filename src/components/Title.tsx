@@ -1,12 +1,10 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View,StyleProp } from "react-native";
 import { fonts } from "../theme/fonts";
 import AddButton from "./AddButton";
+import { TitleParams } from "./types";
 
-export const Title = (props: {
-  children: string;
-  onButtonPress?: () => void;
-}) => {
+export const Title:React.FC<TitleParams> = (props) => {
   return (
     <View style={styles.titleContainer}>
       <Text style={styles.title}>{props.children}</Text>
@@ -15,7 +13,7 @@ export const Title = (props: {
   );
 };
 
-const styles = StyleSheet.create({
+const styles:StyleProp<any> = StyleSheet.create({
   title: {
     fontFamily: fonts.bold,
     fontSize: 34,

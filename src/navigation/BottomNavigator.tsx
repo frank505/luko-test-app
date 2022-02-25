@@ -2,7 +2,7 @@ import * as React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Pressable, Text, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import InventoryScreen from "../screens/InventoryScreen";
+import InventoryScreen from "../screens/InventoryScreen/InventoryScreen";
 import {
   RootTabParamList,
   RootTabScreenProps,

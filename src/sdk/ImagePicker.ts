@@ -24,6 +24,7 @@ const takePhoto: () => Promise<ImagePickerResult> = async () => {
         const pickerResult = await ExpoImagePicker.launchCameraAsync({
             allowsEditing: true,
             aspect: [4, 3],
+            base64:true
         })
         return pickerResult
     }
@@ -36,6 +37,7 @@ const pickImage: () => Promise<ImagePickerResult> = async () => {
         const pickerResult = await ExpoImagePicker.launchImageLibraryAsync({
             allowsEditing: true,
             aspect: [4, 3],
+            base64:true
         })
         return pickerResult
     }
@@ -45,4 +47,4 @@ const pickImage: () => Promise<ImagePickerResult> = async () => {
 export const ImagePicker = {
     takePhoto,
     pickImage,
-}
+} 
