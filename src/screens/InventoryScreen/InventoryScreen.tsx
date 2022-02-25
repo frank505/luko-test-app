@@ -1,14 +1,19 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import {  View,FlatList } from "react-native";
 import { Title } from "../../components/Title";
 import { RootTabScreenProps } from "../../navigation/types";
-import { colors } from "../../theme/colors";
+import InventoryList from "./childcomponents/InventoryList";
+import {styles} from './styles';
+import {useDispatch,useSelector} from 'react-redux';
+import { RootState } from '../../store/Reducers/RootReducer';
+import { InventoryItem } from "../../store/Reducers/types";
 
-export default function InventoryScreen({
-  navigation,
-  route
-}: RootTabScreenProps<"Inventory">) {
-  const handleAddButtonPress = () => navigation.navigate("AddItem");
+
+
+ const InventoryScreen:React.FC<RootTabScreenProps<"Inventory">> = ({navigation,route}) =>
+{
+     const handleAddButtonPress = () => navigation.navigate("AddItem");
+     const inventoryLists = useSelector((state:RootState) => state.inventory.inventoryList);
 
 
   
@@ -16,14 +21,27 @@ export default function InventoryScreen({
   return (
     <View style={styles.container}>
         <Title onButtonPress={handleAddButtonPress}>{route.name}</Title>
+      
+        <View style={{marginTop:25}}>
+          {
+             <FlatList
+            columnWrapperStyle={{justifyContent: 'space-between'}}
+            data={inventoryLists}
+            keyExtractor={(item, index) => index.toString()}
+            horizontal={false}
+            numColumns={2}
+            renderItem={({item, index}) =>
+            <InventoryList key={index} list={item} />
+            }
+          />   
+          }
+         
+        </View>
+
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 20,
-    backgroundColor: colors.background,
-  }
-});
+
+
+export default InventoryScreen;
