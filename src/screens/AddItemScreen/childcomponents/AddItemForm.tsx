@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react';
 import { AddItemFormTypes } from '../types';
-import { View ,Text, Alert} from 'react-native';
+import { View ,Text, Alert, KeyboardAvoidingView,Platform} from 'react-native';
 import { styles } from '../styles';
 import CustomTextField from '../../../components/CustomTextField';
 import CustomTextArea from '../../../components/CustomTextArea';
@@ -13,6 +13,7 @@ import {useDispatch,useSelector} from 'react-redux';
 import { AddInventoryAction, setTotalPriceAction } from '../../../store/actions/InventoryActions';
 import { RootState } from '../../../store/Reducers/RootReducer';
 import { CURRENCY_SET, TRANSACTION_LIMIT } from '../../../constants';
+import { ScrollView } from 'native-base';
 
 
 
@@ -70,9 +71,12 @@ const AddItemForm:React.FC = () =>
 
 
    return (
-     
-         <View>
        
+  
+       
+     <ScrollView
+      style={{marginBottom:10}}
+      >
 
       <View style={styles.buttonsContainer}>
             <Button title="Cancel"
@@ -103,7 +107,9 @@ const AddItemForm:React.FC = () =>
        testID='nameField'         
        />
 
-      <CustomTextField 
+   
+
+<CustomTextField 
       type='text'
       inputStyle={styles.textFields}
        label='Value'
@@ -131,8 +137,8 @@ const AddItemForm:React.FC = () =>
        testID='descriptionField'   
        />
           
-
-         </View>
+          </ScrollView>
+         
       
         
    );

@@ -8,10 +8,15 @@ import { ActivityIndicator } from 'react-native';
 import { NativeBaseProvider } from 'native-base';
 import { store } from './src/store/store';
 import {Provider} from 'react-redux';
+import { LogBox } from 'react-native';
 
+
+LogBox.ignoreAllLogs();
 
  const App:React.FC = () =>
 {
+
+
   const [fontsLoaded] = useFonts({
     [fonts.regular]: "https://fonts.cdnfonts.com/s/15011/CircularStd-Medium.woff",
     [fonts.bold]: "https://fonts.cdnfonts.com/s/15011/CircularStd-Bold.woff",

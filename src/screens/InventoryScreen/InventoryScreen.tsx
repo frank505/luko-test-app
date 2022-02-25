@@ -25,7 +25,7 @@ import { InventoryItem } from "../../store/Reducers/types";
         testID="goToAddItemPage"
         >{route.name}</Title>
       
-        <View style={{marginTop:25}}>
+        <View style={{marginTop:25,flex:1,flexGrow:1}}>
           {
              <FlatList
             columnWrapperStyle={{justifyContent: 'space-between'}}
