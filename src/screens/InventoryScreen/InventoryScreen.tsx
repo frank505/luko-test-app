@@ -10,7 +10,8 @@ import { InventoryItem } from "../../store/Reducers/types";
 
 
 
- const InventoryScreen:React.FC<RootTabScreenProps<"Inventory">> = ({navigation,route}) =>
+ const InventoryScreen:React.FC<RootTabScreenProps<"Inventory">> = 
+ ({navigation,route}) =>
 {
      const handleAddButtonPress = () => navigation.navigate("AddItem");
      const inventoryLists = useSelector((state:RootState) => state.inventory.inventoryList);
@@ -19,8 +20,10 @@ import { InventoryItem } from "../../store/Reducers/types";
   
 
   return (
-    <View style={styles.container}>
-        <Title onButtonPress={handleAddButtonPress}>{route.name}</Title>
+    <View style={styles.container} testID='ssss'>
+        <Title onButtonPress={handleAddButtonPress}
+        testID="goToAddItemPage"
+        >{route.name}</Title>
       
         <View style={{marginTop:25}}>
           {

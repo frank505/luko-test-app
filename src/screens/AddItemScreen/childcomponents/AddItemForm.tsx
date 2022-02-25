@@ -1,8 +1,6 @@
 import React,{useEffect, useState} from 'react';
-import { Input,FormControl, WarningOutlineIcon } from 'native-base';
 import { AddItemFormTypes } from '../types';
-import { colors } from '../../../theme/colors';
-import { Image, View ,Text, Alert} from 'react-native';
+import { View ,Text, Alert} from 'react-native';
 import { styles } from '../styles';
 import CustomTextField from '../../../components/CustomTextField';
 import CustomTextArea from '../../../components/CustomTextArea';

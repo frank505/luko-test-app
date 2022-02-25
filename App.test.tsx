@@ -1,6 +1,8 @@
 import App from './App';
 import { render, RenderAPI } from '@testing-library/react-native';
 import  React from 'react';
+import {Provider} from 'react-redux';
+import { store } from './src/store/store';
 
 
 let mockIsLoadingFont:boolean = false;
@@ -17,7 +19,10 @@ jest.mock("expo-font", () => {
 const  renderComponent = ():RenderAPI =>
 {
   return render(
-    <App/>
+    <Provider store={store}>
+        <App/>
+    </Provider>
+  
   );
 }
 

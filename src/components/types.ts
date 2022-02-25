@@ -24,6 +24,7 @@ testID?:string
 
 export type TitleParams = {
     children: string;
+    testID?:string,
     onButtonPress?: () => void;
 }
 

@@ -2,6 +2,8 @@ import { render, waitFor,RenderAPI,fireEvent } from '@testing-library/react-nati
 import  React from 'react';
 import { NavigationContainer } from "@react-navigation/native";
 import RootNavigator from './RootNavigator';
+import {Provider} from 'react-redux';
+import { store } from '../store/store';
 
 
 
@@ -13,10 +15,11 @@ import RootNavigator from './RootNavigator';
 const renderComponent = ():RenderAPI =>
 {
   return render(
-      <NavigationContainer>
+    <Provider store={store}>
+ <NavigationContainer>
             <RootNavigator/>
       </NavigationContainer>
-
+    </Provider>
   );
 }
 

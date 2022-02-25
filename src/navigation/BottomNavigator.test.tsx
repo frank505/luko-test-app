@@ -2,6 +2,8 @@ import { render, waitFor,RenderAPI,fireEvent } from '@testing-library/react-nati
 import  React from 'react';
 import BottomTabNavigator from './BottomNavigator';
 import { NavigationContainer } from "@react-navigation/native";
+import {Provider} from 'react-redux';
+import { store } from '../store/store';
 
 
 
@@ -13,9 +15,12 @@ import { NavigationContainer } from "@react-navigation/native";
 const renderComponent = ():RenderAPI =>
 {
   return render(
-      <NavigationContainer>
+    <Provider store={store}>
+     <NavigationContainer>
             <BottomTabNavigator/>
       </NavigationContainer>
+    </Provider>
+    
 
   );
 }

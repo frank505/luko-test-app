@@ -8,7 +8,9 @@ export const Title:React.FC<TitleParams> = (props) => {
   return (
     <View style={styles.titleContainer}>
       <Text style={styles.title}>{props.children}</Text>
-      {props.onButtonPress? <AddButton onPress={props.onButtonPress} /> : null}
+      {props.onButtonPress? <AddButton 
+      testID={props.testID}
+      onPress={props.onButtonPress} /> : null}
     </View>
   );
 };
