@@ -6,6 +6,8 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { fonts } from './src/theme/fonts';
 import { ActivityIndicator } from 'react-native';
 import { NativeBaseProvider } from 'native-base';
+import { store } from './src/store/store';
+import {Provider} from 'react-redux';
 
 
  const App:React.FC = () =>
@@ -19,12 +21,15 @@ import { NativeBaseProvider } from 'native-base';
   size="large" style={{justifyContent: 'center', flex: 1}} />
   
   return (
-    <SafeAreaProvider>
+    <Provider store={store}>
+      <SafeAreaProvider>
       <NativeBaseProvider>
       <Navigation />
       </NativeBaseProvider>
       <StatusBar  />
     </SafeAreaProvider>
+    </Provider>
+   
   );
 }
 

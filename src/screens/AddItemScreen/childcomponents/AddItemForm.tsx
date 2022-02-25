@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react';
 import { Input,FormControl, WarningOutlineIcon } from 'native-base';
 import { AddItemFormTypes } from '../types';
 import { colors } from '../../../theme/colors';
-import { Image, View ,Text} from 'react-native';
+import { Image, View ,Text, Alert} from 'react-native';
 import { styles } from '../styles';
 import CustomTextField from '../../../components/CustomTextField';
 import CustomTextArea from '../../../components/CustomTextArea';
@@ -10,6 +10,12 @@ import Button from '../../../components/Button';
 import { useNavigation } from '@react-navigation/native';
 import ImageSelector from './ImageSelector';
 import { validation } from '../validations/AddItemFormValidation';
+import {Dispatch,AnyAction} from 'redux';
+import {useDispatch,useSelector} from 'react-redux';
+import { InventoryDispatchType } from '../../../store/actions/types';
+import { AddInventoryAction, setTotalPriceAction } from '../../../store/actions/InventoryActions';
+import { RootState } from '../../../store/Reducers/RootReducer';
+import { CURRENCY_SET, TRANSACTION_LIMIT } from '../../../constants';
 
 
 
@@ -19,6 +25,9 @@ const AddItemForm:React.FC = () =>
 {
 
    const navigation = useNavigation();
+   const dispatch:Dispatch<any> = useDispatch();
+   const inventoryTotalCost = useSelector((state:RootState) => state.inventory.inventoryTotalPrice);
+   
 
    const [fields, setFields] = useState<AddItemFormTypes>({
     name:'',
@@ -31,9 +40,10 @@ const AddItemForm:React.FC = () =>
 
    useEffect(()=>
    {
-    validation(fields)==  true ? setDisableAddBtn(false) : setDisableAddBtn(true)
+    validation(fields) == true ? setDisableAddBtn(false) : setDisableAddBtn(true)
 
    },[fields])
+
 
 
   
@@ -42,7 +52,23 @@ const AddItemForm:React.FC = () =>
 
   const onSubmitData = ():void =>
    {
-    console.log('sssss');
+    
+     let newPrescribedTotal:number = inventoryTotalCost +  parseInt(fields.value);
+
+     if(newPrescribedTotal > TRANSACTION_LIMIT)
+     {
+      return Alert.alert('Oops! Transaction Error',
+      `you cannot add this new item as the sum of the prices of your current item with your total price exceeds your transaction limit of ${CURRENCY_SET}${TRANSACTION_LIMIT}`);
+     }
+
+     dispatch(AddInventoryAction(fields));
+
+     let newTotal:number = inventoryTotalCost + parseInt(fields.value);
+
+     dispatch(setTotalPriceAction(newTotal));
+
+     navigation.goBack();
+
    }
 
 
@@ -52,8 +78,13 @@ const AddItemForm:React.FC = () =>
        
 
       <View style={styles.buttonsContainer}>
-            <Button title="Cancel" onPress={() => navigation.goBack()} />
-            <Button title="Add" disabled={disableAddBtn}  onPress={onSubmitData} />
+            <Button title="Cancel"
+            testID='CancelButton'
+            onPress={() => navigation.goBack()} 
+            />
+            <Button title="Add" disabled={disableAddBtn} 
+            testID='SubmitButton'
+            onPress={onSubmitData} />
           </View>
    
         <ImageSelector  
@@ -71,7 +102,8 @@ const AddItemForm:React.FC = () =>
        nameProperty="name"
        placeHolder='Bracelet'
       isInvalid={false}
-       errMsg={null}          
+       errMsg={null} 
+       testID='nameField'         
        />
 
       <CustomTextField 
@@ -83,7 +115,9 @@ const AddItemForm:React.FC = () =>
        nameProperty="value"
        placeHolder='700'
       isInvalid={false}
-       errMsg={null}          
+       errMsg={null}  
+       InputRightElement={<Text style={{padding:10}}>{CURRENCY_SET}</Text>}
+       testID='valueField'       
        />
 
 
@@ -94,9 +128,10 @@ const AddItemForm:React.FC = () =>
        label='Description'
        inputValue={fields.description}
        nameProperty="description"
-       placeHolder='Description'
+       placeHolder='Optional'
       isInvalid={false}
-       errMsg={null}          
+       errMsg={null}       
+       testID='descriptionField'   
        />
           
 

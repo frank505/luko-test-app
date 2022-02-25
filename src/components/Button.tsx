@@ -6,10 +6,12 @@ import { colors } from "../theme/colors";
 export default function Button({
   title,
   onPress,
-  disabled
+  disabled,
+  testID
 }: PressableProps & { title: string }) {
   return (
     <Pressable
+    testID={testID}
       onPress={onPress}
       disabled={disabled}
       style={({ pressed }) => [

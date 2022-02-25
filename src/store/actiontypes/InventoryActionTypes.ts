@@ -1,0 +1,3 @@
+export const ADD_INVENTORY = 'ADD_INVENTORY';
+
+export const COUNT_INVENTORY = 'COUNT_INVENTORY';

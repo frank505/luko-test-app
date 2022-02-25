@@ -48,6 +48,7 @@
     "@react-navigation/native-stack": "^6.1.0",
     "@testing-library/react-hooks": "^7.0.2",
     "@types/jest": "^27.4.1",
+    "@types/redux-mock-store": "^1.0.3",
     "expo": "~44.0.0",
     "expo-font": "~10.0.4",
     "expo-image-picker": "^12.0.2",
@@ -60,7 +61,11 @@
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.10.1",
     "react-native-svg": "12.1.1",
-    "react-native-web": "0.17.1"
+    "react-native-web": "0.17.1",
+    "react-redux": "^7.2.6",
+    "redux": "^4.1.2",
+    "redux-mock-store": "^1.5.4",
+    "redux-thunk": "^2.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

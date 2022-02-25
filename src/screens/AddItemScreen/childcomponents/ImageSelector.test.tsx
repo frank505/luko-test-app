@@ -12,7 +12,7 @@ jest.mock('expo-image-picker', () => {
     return {
       ...actualPicker,
       requestCameraPermissionsAsync: jest.fn().mockResolvedValueOnce({granted:true}),
-      launchCameraAsync: jest.fn().mockResolvedValueOnce({cancelled:false}),
+      launchCameraAsync: jest.fn().mockResolvedValueOnce({cancelled:false,base64:'sss'}),
       requestMediaLibraryPermissionsAsync:jest.fn().mockResolvedValueOnce({granted:true}),
       launchImageLibraryAsync: jest.fn().mockResolvedValueOnce({cancelled:false}),
     };

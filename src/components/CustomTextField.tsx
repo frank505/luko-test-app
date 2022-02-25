@@ -17,28 +17,32 @@ const CustomTextField:React.FC<TextFieldParams> = ({
    nameProperty,
    placeHolder,
     testID,
-    labelStyle
+    labelStyle,
+    InputRightElement,
+    InputLeftElement
 }) =>
 {
    return (
     <FormControl isInvalid={isInvalid} >
     <FormControl.Label style={labelStyle}>{label}</FormControl.Label>    
      <Input
-     h={inputStyle?.height}
-   type={type}
-   borderWidth={inputStyle?.borderWidth}
-   borderRadius={inputStyle?.borderRadius}
-   backgroundColor={inputStyle?.backgroundColor}
-   borderColor={inputStyle?.borderColor}
-   lineHeight={inputStyle?.lineHeight}
-   isRequired={true} 
+  h={inputStyle?.height}
+  type={type}
+  borderWidth={inputStyle?.borderWidth}
+  borderRadius={inputStyle?.borderRadius}
+  backgroundColor={inputStyle?.backgroundColor}
+  borderColor={inputStyle?.borderColor}
+  lineHeight={inputStyle?.lineHeight}
+  isRequired={true} 
   placeholder={placeHolder}
   placeholderTextColor={colors.mainGrey}
   onChangeText={onChangeText}
- onBlur={handleBlur == void 0 ? null: handleBlur(nameProperty) }               
- value={inputValue}
- keyboardAppearance="default"
- testID={testID}
+  onBlur={handleBlur == void 0 ? null: handleBlur(nameProperty) }               
+  value={inputValue}
+  keyboardAppearance="default"
+  testID={testID}
+  InputRightElement={InputRightElement}
+  InputLeftElement={InputLeftElement}
     />
 <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
     {errMsg}

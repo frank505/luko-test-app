@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/4</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/4</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
-                <span class="quiet">Functions</span>
                 <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/4</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -115,7 +115,10 @@
 <a name='L50'></a><a href='#L50'>50</a>
 <a name='L51'></a><a href='#L51'>51</a>
 <a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -133,7 +136,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -149,9 +158,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -178,37 +184,40 @@ const CustomTextField:React.FC&lt;TextFieldParams&gt; = ({
      type,
      inputValue,
      label,
-    handleChange, inputStyle,handleBlur,
-   errMsg,isInvalid,
-    setFields,nameProperty,placeHolder,
+     onChangeText,
+ inputStyle,
+ handleBlur,
+   errMsg,
+   isInvalid,
+   nameProperty,
+   placeHolder,
     testID,
-    labelStyle
+    labelStyle,
+    InputRightElement,
+    InputLeftElement
 }) =&gt;
 {
    return (
     &lt;FormControl isInvalid={isInvalid} &gt;
     &lt;FormControl.Label style={labelStyle}&gt;{label}&lt;/FormControl.Label&gt;    
      &lt;Input
-     h={inputStyle?.height}
-   type={type}
-   borderWidth={inputStyle?.borderWidth}
-   borderRadius={inputStyle?.borderRadius}
-   backgroundColor={inputStyle?.backgroundColor}
-   borderColor={inputStyle?.borderColor}
-   lineHeight={inputStyle?.lineHeight}
-   isRequired={true} 
+  h={inputStyle?.height}
+  type={type}
+  borderWidth={inputStyle?.borderWidth}
+  borderRadius={inputStyle?.borderRadius}
+  backgroundColor={inputStyle?.backgroundColor}
+  borderColor={inputStyle?.borderColor}
+  lineHeight={inputStyle?.lineHeight}
+  isRequired={true} 
   placeholder={placeHolder}
   placeholderTextColor={colors.mainGrey}
-  onChangeText={
-<span class="fstat-no" title="function not covered" >  (n</span>ame:string)=&gt;
-{
-<span class="cstat-no" title="statement not covered" >handleChange(name);</span>
-<span class="cstat-no" title="statement not covered" >setFields(name)</span>
-}}
-onBlur={handleBlur == void 0 || <span class="branch-1 cbranch-no" title="branch not covered" >!handleBlur </span>? null: <span class="branch-1 cbranch-no" title="branch not covered" >handleBlur(nameProperty) </span>}               
-value={inputValue}
-keyboardAppearance="default"
-testID={testID}
+  onChangeText={onChangeText}
+  onBlur={handleBlur == void 0 ? null: <span class="branch-1 cbranch-no" title="branch not covered" >handleBlur(nameProperty) </span>}               
+  value={inputValue}
+  keyboardAppearance="default"
+  testID={testID}
+  InputRightElement={InputRightElement}
+  InputLeftElement={InputLeftElement}
     /&gt;
 &lt;FormControl.ErrorMessage leftIcon={&lt;WarningOutlineIcon size="xs" /&gt;}&gt;
     {errMsg}
@@ -226,7 +235,7 @@ export default CustomTextField;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Thu Feb 24 2022 06:25:05 GMT+0100 (West Africa Standard Time)
+                at Fri Feb 25 2022 10:47:13 GMT+0100 (West Africa Standard Time)
             </div>
         <script src="../../prettify.js"></script>
         <script>
