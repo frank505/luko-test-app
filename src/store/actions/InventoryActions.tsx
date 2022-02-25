@@ -1,23 +1,25 @@
-import { Dispatch } from "redux"
+import React from "react";
+import { AnyAction, Dispatch } from "redux"
 import * as InventoryActionTypes from '../actiontypes/InventoryActionTypes';
 import { InventoryItem } from "../Reducers/types";
 import { InventoryDispatchType } from "./types";
 
 
 
-export const AddInventoryAction = (res:InventoryItem):any =>
+export const AddInventoryAction = (res:InventoryItem):React.Dispatch<React.SetStateAction<any>> =>
 {
-    return (dispatch:Dispatch):any =>
+
+    return (dispatch):Dispatch<InventoryDispatchType>  =>
     {
-        dispatch({type:InventoryActionTypes.ADD_INVENTORY, res})
+       return dispatch({type:InventoryActionTypes.ADD_INVENTORY, res})
     }
 }
 
-export const setTotalPriceAction = (res:number) =>
+export const setTotalPriceAction = (res:number):React.Dispatch<React.SetStateAction<any>> =>
 {
-    return (dispatch:Dispatch<InventoryDispatchType>) =>
+    return (dispatch):Dispatch<InventoryDispatchType> =>
     {
-        dispatch({type:InventoryActionTypes.COUNT_INVENTORY, res})
+      return  dispatch({type:InventoryActionTypes.COUNT_INVENTORY, res})
     }
 }
 

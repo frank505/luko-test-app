@@ -7,20 +7,24 @@ import {styles} from './styles';
 import {useDispatch,useSelector} from 'react-redux';
 import { RootState } from '../../store/Reducers/RootReducer';
 import { InventoryItem } from "../../store/Reducers/types";
+import { useNavigation,useRoute } from "@react-navigation/native";
 
 
 
- const InventoryScreen:React.FC<RootTabScreenProps<"Inventory">> = 
- ({navigation,route}) =>
+ const InventoryScreen:React.FC = () =>
 {
+    const navigation = useNavigation();
+    const route = useRoute();
+
      const handleAddButtonPress = () => navigation.navigate("AddItem");
      const inventoryLists = useSelector((state:RootState) => state.inventory.inventoryList);
 
 
   
 
+     
   return (
-    <View style={styles.container} testID='ssss'>
+    <View style={styles.container} >
         <Title onButtonPress={handleAddButtonPress}
         testID="goToAddItemPage"
         >{route.name}</Title>
@@ -34,7 +38,7 @@ import { InventoryItem } from "../../store/Reducers/types";
             horizontal={false}
             numColumns={2}
             renderItem={({item, index}) =>
-            <InventoryList key={index} list={item} />
+            <InventoryList  key={index} testID={'inventory-'+index} list={item} />
             }
           />   
           }

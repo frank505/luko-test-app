@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>4/6</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/6</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -86,49 +86,55 @@
 <a name='L21'></a><a href='#L21'>21</a>
 <a name='L22'></a><a href='#L22'>22</a>
 <a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Dispatch } from "redux"
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from "react";
+import { AnyAction, Dispatch } from "redux"
 import * as InventoryActionTypes from '../actiontypes/InventoryActionTypes';
 import { InventoryItem } from "../Reducers/types";
 import { InventoryDispatchType } from "./types";
 &nbsp;
 &nbsp;
 &nbsp;
-export const AddInventoryAction = (res:InventoryItem):any =&gt;
+export const AddInventoryAction = (res:InventoryItem):React.Dispatch&lt;React.SetStateAction&lt;any&gt;&gt; =&gt;
 {
-    return <span class="fstat-no" title="function not covered" >(d</span>ispatch:Dispatch):any =&gt;
+&nbsp;
+    return (dispatch):Dispatch&lt;InventoryDispatchType&gt;  =&gt;
     {
-<span class="cstat-no" title="statement not covered" >        dispatch({type:InventoryActionTypes.ADD_INVENTORY, res})</span>
+       return dispatch({type:InventoryActionTypes.ADD_INVENTORY, res})
     }
 }
 &nbsp;
-export const setTotalPriceAction = (res:number) =&gt;
+export const setTotalPriceAction = (res:number):React.Dispatch&lt;React.SetStateAction&lt;any&gt;&gt; =&gt;
 {
-    return <span class="fstat-no" title="function not covered" >(d</span>ispatch:Dispatch&lt;InventoryDispatchType&gt;) =&gt;
+    return (dispatch):Dispatch&lt;InventoryDispatchType&gt; =&gt;
     {
-<span class="cstat-no" title="statement not covered" >        dispatch({type:InventoryActionTypes.COUNT_INVENTORY, res})</span>
+      return  dispatch({type:InventoryActionTypes.COUNT_INVENTORY, res})
     }
 }
 &nbsp;
@@ -139,7 +145,7 @@ export const setTotalPriceAction = (res:number) =&gt;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Fri Feb 25 2022 23:50:41 GMT+0100 (West Africa Standard Time)
+                at Sun Feb 27 2022 07:06:52 GMT+0100 (West Africa Standard Time)
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
